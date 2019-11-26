@@ -1,0 +1,7 @@
+mutation UpdatePersonByName($name: String!, $personAttributes: PersonAttributes!) {
+  updatePersonByName(lastName: $name, personAttributes: $personAttributes) {
+    firstName
+    lastName
+    age
+  }
+}

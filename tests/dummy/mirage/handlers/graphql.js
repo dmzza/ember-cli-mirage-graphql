@@ -32,7 +32,13 @@ const OPTIONS = {
   },
   mutations: {
     updatePerson: (people, { id, personAttributes }) =>
-      people.update(id, adaptPersonAttrs(personAttributes))
+      people.update(id, adaptPersonAttrs(personAttributes)),
+    updatePersonByName: (people, args) => {
+      const { surname, personAttributes } = args
+      const peopleWithName = people.filter(person => person.surname === surname)
+      const personId = peopleWithName[0].id
+      return people.update(personId, adaptPersonAttrs(personAttributes))
+    }
   },
   argsMap: {
     Person: {
